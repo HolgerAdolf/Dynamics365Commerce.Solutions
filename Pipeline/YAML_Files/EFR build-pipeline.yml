@@ -69,12 +69,5 @@ steps:
       filePath: ./Pipeline/PowerShellScripts/CopyFileToDestination.ps1
       arguments: '-RelativePath "$(Build.SourcesDirectory)\$(SolutionDirectory)\StoreCommerce.Installer" -File "Contoso.EFRSample.StoreCommerce.Installer.exe" -DestinationFullName "$(Build.ArtifactStagingDirectory)\Contoso.EFRSample.StoreCommerce.Installer_$(Build.BuildNumber).exe"'
 
-  - task: PowerShell@2
-    displayName: 'Sign Files'
-    inputs:
-      targetType: filePath
-      filePath: ./Pipeline/PowerShellScripts/CodeSign.ps1
-      arguments: '-TenantId $(TenantId) -ApplicationId $(ApplicationId) -ApplicationSecretValue $(SecretValue) -AzureKeyVaultURI $(AzureKeyVaultURI) -CertificateName $(CertificateName) -Timestamp $(Timestamp) -TimestampDigest "sha256" -Files "$(Build.ArtifactStagingDirectory)\Contoso.EFRSample.HardwareStation.Installer_$(Build.BuildNumber).exe $(Build.ArtifactStagingDirectory)\Contoso.EFRSample.ScaleUnit.Installer_$(Build.BuildNumber).exe $(Build.ArtifactStagingDirectory)\Contoso.EFRSample.StoreCommerce.Installer_$(Build.BuildNumber).exe"'
-
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
