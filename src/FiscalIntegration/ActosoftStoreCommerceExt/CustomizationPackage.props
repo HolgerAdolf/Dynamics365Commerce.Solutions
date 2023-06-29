@@ -1,0 +1,38 @@
+<Project>
+  <PropertyGroup>
+    <BuildNumber Condition="'$(BuildNumber)' == ''">0.0</BuildNumber>
+    <MajorVersion>9.44</MajorVersion>
+    <Version>$(MajorVersion).$(BuildNumber)</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Workaround for breaking changes in PackageDefinitions metadata. https://github.com/dotnet/sdk/issues/30809 -->
+    <!-- TODO: avoid of the PackageDefinitions usage. -->
+    <EmitLegacyAssetsFileItems>true</EmitLegacyAssetsFileItems>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Publisher Condition="'$(Publisher)' == ''">ACT=act'o-soft GmbH</Publisher>
+    <PublisherDisplayName Condition="'$(PublisherDisplayName)' == ''">act'o-soft GmbH</PublisherDisplayName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CommerceSdkPackagesVersion>[9.44.*,9.45)</CommerceSdkPackagesVersion>
+    <CommercePosPackagesVersion>[9.44.*,9.45)</CommercePosPackagesVersion>
+    <CommerceChannelPackagesVersion>[9.44.*,9.45)</CommerceChannelPackagesVersion>
+    <CommerceHwsPackagesVersion>[9.44.*,9.45)</CommerceHwsPackagesVersion>
+    <CommerceToolsPackagesVersion>[10.31.*,10.32)</CommerceToolsPackagesVersion>
+    <CommercePaymentsPackagesVersion>[10.44.*,10.45)</CommercePaymentsPackagesVersion>
+    <!-- Newtonsoft.Json -->
+    <NewtonsoftJsonVersion>13.0.2</NewtonsoftJsonVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackagePublisher Condition="'$(PackagePublisher)' == ''">$(Publisher)</PackagePublisher>
+    <PackagePublisherDisplayName Condition="'$(PackagePublisherDisplayName)' == ''">$(PublisherDisplayName)</PackagePublisherDisplayName>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">$(Version)</PackageVersion>
+    <PackageName Condition="'$(PackageName)' == ''">Actosoft.StoreCommerceExtension</PackageName>
+    <PackageDisplayName Condition="'$(PackageDisplayName)' == ''">Act'o-soft Store Commerce Extension</PackageDisplayName>
+    <PackageDescription Condition="'$(PackageDescription)' == ''">Store Commerce Extension (EFR-EFSTA)</PackageDescription>
+  </PropertyGroup>
+</Project>
